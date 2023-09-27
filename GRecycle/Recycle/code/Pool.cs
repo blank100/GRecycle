@@ -15,7 +15,7 @@ namespace Gal.Core
         private int m_MaxCacheSize;
 
         private readonly Func<T> m_ElementGenerate;
-        private readonly Action<T> m_ElementAwake;
+        private readonly Action<T>? m_ElementAwake;
         private readonly Action<T> m_ElementSleep;
 
         private readonly Stack<T> m_Stack;
@@ -31,7 +31,7 @@ namespace Gal.Core
             }
         }
 
-        public Pool(Func<T> elementGenerate, Action<T> elementSleep, Action<T> elementAwake, int maxCacheSize = 8) {
+        public Pool(Func<T> elementGenerate, Action<T> elementSleep, Action<T>? elementAwake, int maxCacheSize = 8) {
             Debug.Assert(maxCacheSize > 0, $"{nameof(maxCacheSize)} cannot be negative");
             Debug.Assert(elementGenerate != null, $"{nameof(elementGenerate)}");
             Debug.Assert(elementSleep != null, $"{nameof(elementSleep)}");
